@@ -56,7 +56,7 @@ namespace WPFClient
                 }
             }
         }
-
+        //katan
         private void RegisterBtn_Click(object sender, RoutedEventArgs e)
         {
 
