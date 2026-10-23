@@ -1,0 +1,63 @@
+﻿<Window x:Class="WPFClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        FlowDirection="RightToLeft">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <!-- סרגל עליון -->
+            <RowDefinition Height="*"/>
+            <!-- אזור תוכן מרכזי ותפריט -->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <!-- עמודה 0: תפריט צדי (יופיע בצד ימין ב-RTL) -->
+            <ColumnDefinition Width="*"/>
+            <!-- עמודה 1: מסך מרכזי (יופיע בצד שמאל ב-RTL) -->
+        </Grid.ColumnDefinitions>
+
+        <!-- 1. סרגל עליון -->
+        <Border Grid.Row="0" Grid.ColumnSpan="2" Background="#2C3E50">
+            <DockPanel Margin="15,0">
+                <!-- שם האפליקציה (בצד ימין) -->
+                <TextBlock Text="FixItLocal" 
+                           Foreground="White" 
+                           FontSize="18" 
+                           FontWeight="Bold"
+                           VerticalAlignment="Center" 
+                           DockPanel.Dock="Right"/>
+
+                <!-- פרטי משתמש וכפתור התנתקות (בצד שמאל) -->
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Center">
+                    <TextBlock x:Name="txtUserInfo" 
+                               Text="שלום, משתמש" 
+                               Foreground="White" 
+                               Margin="0,0,15,0" 
+                               VerticalAlignment="Center"/>
+                    <!--<Button Content="התנתק" 
+                            Click="Logout_Click" 
+                            Padding="10,5"/>-->
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- 2. תפריט צדי דינמי (בצד ימין) -->
+        <Border Grid.Row="1" Grid.Column="0" Background="#34495E">
+            <ContentControl x:Name="MenuContentArea"/>
+        </Border>
+
+        <!-- 3. מסך מרכזי (בצד שמאל) -->
+        <Frame x:Name="MainFrame" 
+               Grid.Row="1" 
+               Grid.Column="1" 
+               NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>
